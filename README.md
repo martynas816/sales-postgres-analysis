@@ -1,84 +1,62 @@
-\# Sales Analysis with PostgreSQL
+\# Sales Analysis with PostgreSQL (Local)
 
 
 
-End-to-end SQL analytics project using PostgreSQL and DBeaver.
+End-to-end SQL analytics project in PostgreSQL: load → stage → clean → analyze.
 
 
 
-\## Project Overview
+\## What’s inside
 
-This project demonstrates a simple analytics pipeline:
+\- `data/sales\_data\_sample.csv` – source dataset (2,823 rows)
 
-\- Raw CSV ingestion
+\- `sql/01\_schema.sql` – creates schema + sets search\_path
 
-\- Staging table
+\- `sql/02\_create\_raw\_table.sql` – creates staging table
 
-\- Cleaned analytical table
+\- `sql/03\_load\_raw.sql` – loads CSV into staging (COPY)
 
-\- Business-focused aggregations
+\- `sql/04\_transform\_and\_analysis.sql` – creates clean table + analysis queries
 
-
-
-\## Dataset
-
-\- Source: `sales\_data\_sample.csv`
-
-\- Rows: 2,823
-
-\- Domain: Retail sales
+\- `outputs/results.md` – saved query outputs (viewable without running)
 
 
 
-\## Pipeline
+\## How to run (DBeaver)
 
-1\. Create schema
+1\. Create database `analytics` (or use an existing DB)
 
-2\. Create raw staging table
+2\. Connect in DBeaver
 
-3\. Load CSV into PostgreSQL
+3\. Run scripts in this order:
 
-4\. Transform into clean analytics table
+&nbsp;  - `sql/01\_schema.sql`
 
-5\. Run exploratory revenue analysis
+&nbsp;  - `sql/02\_create\_raw\_table.sql`
+
+&nbsp;  - `sql/03\_load\_raw.sql`  
+
+&nbsp;    \*\*Note:\*\* this script uses a local file path. If your repo path is different, edit the `FROM '...'` line.
+
+&nbsp;  - `sql/04\_transform\_and\_analysis.sql`
 
 
 
-\## Analysis Highlights
+\## Notes
 
-\- Revenue by year
+\- CSV load uses `ENCODING 'WIN1252'` to avoid UTF-8 byte errors.
 
-\- Revenue by month
+\- Tables created:
 
-\- Revenue by product line
+&nbsp; - `sales.stg\_sales\_raw` (staging)
 
-\- Revenue by country
-
-\- Revenue by deal size
+&nbsp; - `sales.sales\_clean` (clean analytics table)
 
 
 
 \## Tools
 
-\- PostgreSQL
-
-\- DBeaver
-
-\- SQL
-
-
-
-\## How to Run
-
-Execute SQL scripts in order:
-
-1\. `01\_schema.sql`
-
-2\. `02\_create\_raw\_table.sql`
-
-3\. `03\_load\_raw.sql`
-
-4\. `04\_transform\_and\_analysis.sql`
+PostgreSQL • DBeaver • SQL
 
 
 

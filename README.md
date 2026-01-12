@@ -1,6 +1,6 @@
 # Sales Analysis with PostgreSQL (Local)
 
-End-to-end SQL analytics project in PostgreSQL: load → stage → clean → analyze.
+End-to-end SQL analytics project in PostgreSQL.
 
 ## What’s inside
 - `data/sales_data_sample.csv` – source dataset (2,823 rows)

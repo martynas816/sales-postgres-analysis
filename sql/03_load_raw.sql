@@ -27,5 +27,5 @@ COPY sales.stg_sales_raw (
     contactfirstname,
     dealsize
 )
-FROM 'D:/downloads/sales_data_sample.csv'
+FROM 'D:/downloads/sales-postgres-analysis/data/sales_data_sample.csv'
 WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'WIN1252');

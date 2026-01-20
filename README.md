@@ -16,8 +16,7 @@ End-to-end SQL analytics project in PostgreSQL.
 3. Run scripts in this order:
    - `sql/01_schema.sql`
    - `sql/02_create_raw_table.sql`
-   - `sql/03_load_raw.sql`  
-     **Note:** this script uses a local file path. If your repo path is different, edit the `FROM '...'` line.
+   - `sql/03_load_raw.sql`
    - `sql/04_transform_and_analysis.sql`
 
 ## Notes

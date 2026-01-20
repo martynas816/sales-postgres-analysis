@@ -28,15 +28,4 @@ End-to-end SQL analytics project in PostgreSQL.
 ## Tools
 PostgreSQL • DBeaver • SQL
 
-## Dashboard (Metabase)
 
-![Overview](outputs/01-dashboard-overview.png)
-
-# USA
-![USA](outputs/02-country-usa.png)
-
-# Finland
-![Finland](outputs/03-country-finland.png)
-
-# USA Year 2003
-![USA 2003](outputs/04-country-usa-year-2003.png)

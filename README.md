@@ -3,7 +3,7 @@
 End-to-end SQL analytics project in PostgreSQL.
 
 ## What’s inside
-- `data/sales_data_sample.csv` – source dataset (2,823 rows)
+- `data/sales_raw.csv` – source dataset (2,823 rows)
 - `sql/01_schema.sql` – creates schema + sets search_path
 - `sql/02_create_raw_table.sql` – creates staging table
 - `sql/03_load_raw.sql` – loads CSV into staging (COPY)

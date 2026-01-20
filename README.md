@@ -1,4 +1,4 @@
-# Sales Analysis with PostgreSQL (Local)
+# Sales Analysis with PostgreSQL
 
 End-to-end SQL analytics project in PostgreSQL.
 

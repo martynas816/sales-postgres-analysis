@@ -50,7 +50,7 @@ services:
       MB_DB_PASS: metabase
       MB_DB_HOST: metabase-db
     ports:
-      - "3000:3000"
+      - "3001:3000"
 
 volumes:
   warehouse_data:

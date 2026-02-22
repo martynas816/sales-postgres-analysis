@@ -7,7 +7,7 @@ End-to-end SQL analytics project: raw CSV -> clean layer -> star schema -> Metab
    ```bash
    docker compose up
    ```
-2. Open Metabase: http://localhost:3001
+2. Open Metabase: http://localhost:3000
 3. In Metabase, add the warehouse database:
    - Host: `warehouse`
    - Port: `5432`

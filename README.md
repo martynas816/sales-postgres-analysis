@@ -1,57 +1,60 @@
-# Sales Analysis with PostgreSQL (Docker)
+# Sales Analysis with PostgreSQL
 
-End-to-end SQL analytics project: raw CSV -> clean layer -> star schema -> Metabase dashboards.
+SQL analytics project built in PostgreSQL and Docker Compose, with Metabase used for dashboarding.
 
-## Quickstart
-1. Start everything:
-   ```bash
-   docker compose up
-   ```
-2. Open Metabase: http://localhost:3001
-3. In Metabase, add the warehouse database:
-   - Host: `warehouse`
-   - Port: `5432`
-   - Database: `sales`
-   - Username: `postgres`
-   - Password: `postgres`
+## Overview
+- Raw CSV load into PostgreSQL
+- Cleaning and transformation in SQL
+- Star schema modeling
+- Metabase dashboards on top of the warehouse
 
-That’s it — the database is created and the CSV is loaded automatically on first start.
+## Stack
+- PostgreSQL
+- Docker Compose
+- Metabase
 
-## What's inside
-- `data/sales_raw.csv` - source dataset (2,823 rows)
-- `docker-compose.yml` - Postgres warehouse + Metabase
-- `docker/warehouse-init/00_bootstrap.sql` - auto-runs SQL scripts on first container start
+## Run
+```bash
+docker compose up
+```
 
-SQL scripts (run automatically by Docker):
-- `sql/01_schema.sql` - creates schema + sets search_path
-- `sql/02_create_raw_table.sql` - creates staging table (`sales.stg_sales_raw`)
-- `sql/03_load_raw.sql` - loads CSV inside Docker (path: `/data/sales_raw.csv`)
-- `sql/04_transform_and_analysis.sql` - builds clean table (`sales.sales_clean`)
-- `sql/05_build_star_schema.sql` - builds star schema (dims + fact)
-- `sql/06_analytics_queries.sql` - advanced analysis queries (read-only)
+Metabase: `http://localhost:3001`
 
-Outputs:
-- `outputs/outputs.md` - saved query outputs (viewable without running)
-- `outputs/*.png` - Metabase dashboard screenshots
+Warehouse connection:
+- Host: `warehouse`
+- Port: `5432`
+- Database: `sales`
+- Username: `postgres`
+- Password: `postgres`
 
-## Data model (star schema)
-- `sales.fct_order_lines` (grain: `ordernumber + orderlinenumber`)
+## Repository layout
+- `data/sales_raw.csv` - source data
+- `sql/` - schema, load, transformation, star schema, analytics queries
+- `docker/warehouse-init/00_bootstrap.sql` - warehouse bootstrap
+- `outputs/outputs.md` - saved query outputs
+- `outputs/*.png` - dashboard screenshots
+
+## Warehouse model
+- `sales.stg_sales_raw`
+- `sales.sales_clean`
+- `sales.fct_order_lines`
 - `sales.dim_date`
 - `sales.dim_customers`
 - `sales.dim_products`
 
-## Notes
-- CSV load uses `ENCODING 'WIN1252'` to avoid UTF-8 byte errors.
-
-## Dashboard (Metabase)
-
+## Dashboard
 ![Overview](outputs/01-dashboard-overall.png)
 
-# USA
-![USA](outputs/02-usa.png)
+<details>
+  <summary>More screenshots</summary>
 
-# Finland
-![Finland](outputs/03-finland.png)
+## USA
 
-# USA Year 2003
-![USA 2003](outputs/04-usa-year-2003.png)
+  ![USA](outputs/02-usa.png)
+
+## Finland
+  ![Finland](outputs/03-finland.png)
+
+## USA 2003
+  ![USA 2003](outputs/04-usa-year-2003.png)
+</details>
